@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Student Mindset Quiz</title>
+    <!-- Google Font for a clean, modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Basic reset and layout */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradient background */
+            display: flex;
+            justify-content: left;
+            align-items: left;
+            height: 100vh;
+            color: #333;
+            text-align: left;
+        }
+
+        /* Main container for the quiz */
+        #quiz-container {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 40px;
+            width: 100%;
+            max-width: 850px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        /* Hover effect for the container */
+        #quiz-container:hover {
+            transform: scale(1.02);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #2575fc;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin: 15px 0;
+            color: #555;
+        }
+
+        /* Style for questions */
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .question input[type="radio"] {
+            margin-right: 15px;
+            transition: transform 0.2s;
+        }
+
+        /* Change size of radio buttons on hover */
+        .question input[type="radio"]:hover {
+            transform: scale(1.2);
+        }
+
+        label {
+            font-size: 1rem;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        /* Change color of label on hover */
+        label:hover {
+            color: #2575fc;
+        }
+
+        button {
+            background-color: #2575fc;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 30px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #1c60c1;
+            transform: translateY(-2px);
+        }
+
+        /* Result section style */
+        #result {
+            margin-top: 30px;
+            padding: 25px;
+            background-color: #eaf7f6;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            color: #333;
+            font-size: 1.2rem;
+            transition: opacity 0.3s ease;
+        }
+
+        #result h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #2575fc;
+        }
+
+        /* Responsive design for mobile */
+        @media screen and (max-width: 600px) {
+            #quiz-container {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            button {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+
+            #result h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Bold styling for questions */
+        .question-text {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="quiz-container">
+        <h1>Student Mindset Quiz</h1>
+    <div id="quiz-container">
+        <h1>Analyse yourself through our quiz!!</h1>
+        
+        <!-- Question 1 -->
+        <p class="question-text">Question 1: When you encounter a new topic, how do you feel?</p>
+        <input type="radio" name="q1" value="2"> A. Excited to dive in and explore everything right away<br>
+        <input type="radio" name="q1" value="1"> B. Curious but I prefer to take my time and understand the basics first<br>
+        <input type="radio" name="q1" value="0"> C. Anxious I find it difficult to start without clear instructions<br>
+
+        <!-- Question 2 -->
+        <p class="question-text">Question 2: If you are given a new task at school, how do you approach it?</p>
+        <input type="radio" name="q2" value="2"> A. I like to experiment and figure things out as I go along<br>
+        <input type="radio" name="q2" value="1"> B. I plan out my approach carefully before taking action<br>
+        <input type="radio" name="q2" value="0"> C. I seek help immediately to ensure I understand whats expected of me.<br>
+
+        <!-- Question 3 -->
+        <p class="question-text">Question 3: You notice a classmate who is upset because they didn’t do well on an exam. What do you say to them?</p>
+        <input type="radio" name="q3" value="2"> A. I tell them it's okay and offer to study together.<br>
+        <input type="radio" name="q3" value="1"> B. I tell them to try harder next time.<br>
+        <input type="radio" name="q3" value="0"> C. I avoid them and let them be.<br>
+
+        <!-- Question 4 -->
+        <p class="question-text">Question 4: When you're reading or learning something new, how do you process the information?</p>
+        <input type="radio" name="q4" value="2"> A. I skim through it quickly to get the main ideas and move on.<br>
+        <input type="radio" name="q4" value="1"> B. I read slowly, making sure I understand every part thoroughly.<br>
+        <input type="radio" name="q4" value="0"> C. I take notes or underline key points as I read.<br>
+
+        <!-- Question 5 -->
+        <p class="question-text">Question 5: How do you feel about unexpected changes in your learning routine?</p>
+        <input type="radio" name="q5" value="2"> A. I adapt quickly and enjoy the new challenge.<br>
+        <input type="radio" name="q5" value="1"> B. I feel a bit thrown off but can adjust once I get organized.<br>
+        <input type="radio" name="q5" value="0"> C. I feel stressed and may have trouble adjusting to the change.<br>
+
+        <!-- Question 6 -->
+        <p class="question-text">Question 6: How do you usually approach problem-solving tasks?</p>
+        <input type="radio" name="q6" value="2"> A. I jump right into solving the problem and figure out the details as I go.<br>
+        <input type="radio" name="q6" value="1"> B. I carefully analyze the situation and plan a step-by-step solution.<br>
+        <input type="radio" name="q6" value="0"> C. I ask for guidance to make sure I'm on the right track. <br>
+
+        <!-- Question 7 -->
+        <p class="question-text">Question 7: When you learn with a group, how do you interact?</p> 
+        <input type="radio" name="q7" value="2"> A. I take the lead and organize the group’s activities. <br>
+        <input type="radio" name="q7" value="1"> B. I prefer to listen and contribute when I feel I have something valuable to say.<br>
+        <input type="radio" name="q7" value="0"> C. I often rely on others to explain things and guide the group. <br>
+
+        <!-- Question 8 -->
+        <p class="question-text">Question 8: If you make a mistake while learning something new, how do you respond?</p>
+        <input type="radio" name="q8" value="2"> A. I try to fix it myself, learning from the mistake along the way.<br>
+        <input type="radio" name="q8" value="1"> B. I reflect on what went wrong and adjust my approach next time.<br>
+        <input type="radio" name="q8" value="0"> C. I get discouraged and often need reassurance that I’m on the right track.<br>
+
+        <!-- Question 9 -->
+        <p class="question-text">Question 9: How do you typically manage time when studying or working on assignments?</p>
+        <input type="radio" name="q9" value="2"> A. I work in bursts of energy, tackling tasks as they come. <br>
+        <input type="radio" name="q9" value="1"> B. I stick to a strict schedule and break tasks into manageable parts.<br>
+        <input type="radio" name="q9" value="0"> C. I sometimes struggle to organize my time and may leave things to the last minute.<br>
+
+        <!-- Question 10 -->
+        <p class="question-text">Question 10: When it comes to revising or preparing for exams, what’s your strategy?</p> 
+        <input type="radio" name="q10" value="2"> A.  I start early and revise in small, consistent chunks.<br>
+        <input type="radio" name="q10" value="1"> B.  I leave it until closer to the exam and focus intensely to cover everything.<br>
+        <input type="radio" name="q10" value="0"> C.  I rely on practice tests and feedback to gauge my understanding. <br>
+
+        <!-- Question 11 -->
+        <p class="question-text">Question 11: When you're unsure about a concept or subject, what do you typically do?</p>
+        <input type="radio" name="q11" value="2"> A. I attempt to figure it out by experimenting or trying it out myself.<br>
+        <input type="radio" name="q11" value="1"> B. I look for resources, like books or online material, to help me understand.<br>
+        <input type="radio" name="q11" value="0"> C. I ask teachers or peers for clarification.<br>
+
+        <!-- Question 12 -->
+        <p class="question-text">Question 12: How do you typically manage time when studying or working on assignments?</p>
+        <input type="radio" name="q12" value="2"> A. I work in bursts of energy, tackling tasks as they come. <br>
+        <input type="radio" name="q12" value="1"> B. I stick to a strict schedule and break tasks into manageable parts.<br>
+        <input type="radio" name="q12" value="0"> C. I sometimes struggle to organize my time and may leave things to the last minute.<br>
+
+        <!-- Question 13 -->
+        <p class="question-text">Question 13: How do you recharge after a long study session?</p> 
+        <input type="radio" name="q13" value="2"> A. Spending time with friends or family, engaging in social activities.<br>
+        <input type="radio" name="q13" value="1"> B. Spending time alone, doing something calm like reading or taking a walk. <br>
+        <input type="radio" name="q13" value="0"> C. Checking social media <br>
+
+        <!-- Question 14 -->
+        <p class="question-text">Question 14: When reviewing your exam performance, you are most likely to focus on?</p>
+        <input type="radio" name="q14" value="2"> A. How well you did on individual questions, considering whether you applied the correct formulas, logic, or facts. <br>
+        <input type="radio" name="q14" value="1"> B. How the exam made you feel, whether you were confident, anxious, or satisfied with your approach. <br>
+        <input type="radio" name="q14" value="0"> C. Don't reflect much and think that I will perform better in the next exam <br>
+
+        <!-- Question 15 -->
+        <p class="question-text">Question 15: How many hours per day do you dedicate to studying during exam preparation?</p>
+        <input type="radio" name="q15" value="2"> A. 3 or more hours <br>
+        <input type="radio" name="q15" value="1"> B. 1 or 2 hours<br>
+        <input type="radio" name="q15" value="0"> C. Less than 1 hour <br>
+
+        <!-- Submit Button -->
+        <br>
+        <button onclick="calculateScore()">Submit</button>
+
+        <!-- Result Display -->
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function calculateScore() {
+            var score = 0;
+
+            // Question 1
+            var q1 = document.querySelector('input[name="q1"]:checked');
+            if (q1) score += parseInt(q1.value);
+
+            // Question 2
+            var q2 = document.querySelector('input[name="q2"]:checked');
+            if (q2) score += parseInt(q2.value);
+
+            // Question 3
+            var q3 = document.querySelector('input[name="q3"]:checked');
+            if (q3) score += parseInt(q3.value);
+
+            // Question 4
+            var q4 = document.querySelector('input[name="q4"]:checked');
+            if (q4) score += parseInt(q4.value);
+
+            // Question 5
+            var q5 = document.querySelector('input[name="q5"]:checked');
+            if (q5) score += parseInt(q5.value);
+
+            // Question 6
+            var q6 = document.querySelector('input[name="q6"]:checked');
+            if (q6) score += parseInt(q6.value);
+
+            // Question 7
+            var q7 = document.querySelector('input[name="q7"]:checked');
+            if (q7) score += parseInt(q7.value);
+
+            // Question 8
+            var q8 = document.querySelector('input[name="q8"]:checked');
+            if (q8) score += parseInt(q8.value);
+
+            // Question 9
+            var q9 = document.querySelector('input[name="q9"]:checked');
+            if (q9) score += parseInt(q9.value);
+
+            // Question 10
+            var q10 = document.querySelector('input[name="q10"]:checked');
+            if (q10) score += parseInt(q10.value);
+
+            // Question 11
+            var q11 = document.querySelector('input[name="q11"]:checked');
+            if (q11) score += parseInt(q11.value);
+
+            // Question 12
+            var q12 = document.querySelector('input[name="q12"]:checked');
+            if (q12) score += parseInt(q12.value);
+
+            // Question 13
+            var q13 = document.querySelector('input[name="q13"]:checked');
+            if (q13) score += parseInt(q13.value);
+
+            // Question 14
+            var q14 = document.querySelector('input[name="q14"]:checked');
+            if (q14) score += parseInt(q14.value);
+
+            // Question 15
+            var q15 = document.querySelector('input[name="q15"]:checked');
+            if (q15) score += parseInt(q15.value);
+
+            // Display Result
+            var result = document.getElementById('result');
+            result.innerHTML = "<h2>Your score: " + score + "</h2>";
+
+            // Feedback based on score
+            if (score >= 20) {
+                result.innerHTML += "<p>You have a strong mindset! Great problem-solving and emotional intelligence! But you should keep going this way and stay motivated. No matter the hurdle, try your best, and be happy with your efforts :)</p>";
+            } else if (score >= 10) {
+                result.innerHTML += "<p>You have a good balance of skills, but there’s room for improvement. You are going the right way but may feel left out or stressed sometimes. Keep your hopes up and trust yourself :)</p>";
+            } else {
+                result.innerHTML += "<p>You may want to work on your decision-making and emotional intelligence skills. That doesn't mean you're not good. You can make better decisions in certain situations and can handle matters in better ways. Have a clear mind and never lose hope :)</p>";
+            }
+            
+        }
+    </script>
+</body>
+</html>

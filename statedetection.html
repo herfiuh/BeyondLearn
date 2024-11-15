@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+      border: 2px solid #333;
+      border-radius: 8px;
+    }
+
+    .display {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .emotion {
+      font-size: 24px;
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    .suggestion {
+      margin-top: 10px;
+      font-size: 18px;
+      color: #555;
+      line-height: 1.6;
+    }
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emotion-Based Educational Suggestions</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Emotion-Based Educational Suggestions</h1>
+    <video id="video" autoplay></video>
+    <div class="display">
+      <div id="emotion" class="emotion">Emotion: </div>
+      <div id="suggestion" class="suggestion">Suggestions: </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+<script>
+  // Get video element and display elements
+  const video = document.getElementById('video');
+  const emotionDisplay = document.getElementById('emotion');
+  const suggestionDisplay = document.getElementById('suggestion');
+
+  // Define emotions and educational suggestions
+  const emotions = {
+    'angry': [
+      'Take a short break and clear your mind before tackling difficult tasks.',
+      'Try some stress-relieving exercises before studying.',
+      'Focus on one task at a time to reduce feeling overwhelmed.',
+      'Consider changing your study environment to feel more relaxed.',
+      'Break down your study sessions into smaller chunks to stay focused.'
+    ],
+    'disgusted': [
+      'Change your study environment to refresh your mind.',
+      'Try a different method of learning, like watching educational videos.',
+      'Work with a study partner to make learning more engaging.',
+      'Use interactive learning tools or apps to make studying more fun.',
+      'Take a moment to refocus and reframe your study approach.'
+    ],
+    'fearful': [
+      'Start with easy tasks to build confidence before jumping into harder subjects.',
+      'Talk to a peer or teacher for guidance on tricky topics.',
+      'Write down your thoughts to get clarity on what’s causing the fear.',
+      'Tackle small sections of study material instead of overwhelming yourself.',
+      'Set realistic goals and celebrate small wins to boost your confidence.'
+    ],
+    'happy': [
+      'Keep your momentum going! Take on more challenges today.',
+      'Set a new learning goal or challenge for yourself.',
+      'Take time to explore new topics or subjects that interest you.',
+      'Share your knowledge with others, it reinforces your own learning.',
+      'Celebrate your accomplishments and stay motivated for the next challenge.'
+    ],
+    'sad': [
+      'Take a short break and relax before continuing your studies.',
+      'Consider using educational apps or games to make learning more engaging.',
+      'Talk to a teacher or mentor for advice and support in challenging areas.',
+      'Use positive affirmations to boost your mood and approach studying with a fresh perspective.',
+      'Revisit study materials that you feel confident about to regain a sense of accomplishment.'
+    ],
+    'surprised': [
+      'Revisit topics that you didn’t expect to enjoy—there’s often more to learn!',
+      'Explore new learning materials on unexpected subjects.',
+      'Embrace the surprise as an opportunity to expand your knowledge.',
+      'Try to apply new learning techniques to the topic you find surprising.',
+      'Take notes on what caught your attention to explore it further later.'
+    ],
+    'neutral': [
+      'Focus on maintaining a steady study rhythm.',
+      'Take a moment to review your notes and make sure you’re on track.',
+      'Try to set a small challenge for yourself to add purpose to your study session.',
+      'Break up your study time with short, focused sessions to stay engaged.',
+      'Reflect on your progress and adjust your goals if needed.'
+    ],
+    'bored': [
+      'Try learning with a new medium like podcasts or interactive websites.',
+      'Switch to a new subject or try a hands-on project to spark your interest.',
+      'Join a study group for a more dynamic and engaging learning experience.',
+      'Incorporate active learning techniques like summarizing and teaching.',
+      'Take a short break and then switch to a more stimulating subject.'
+    ],
+    'excited': [
+      'Use this energy to dive into a complex topic or start a new project!',
+      'Share your excitement with classmates and work together on a project.',
+      'Consider setting a challenging goal that aligns with your enthusiasm.',
+      'Organize a study session around something you’re passionate about.',
+      'Use your excitement to fuel your motivation for long-term learning goals.'
+    ],
+    'confused': [
+      'Break down complex problems into smaller steps to understand them better.',
+      'Ask for help from a tutor or use online resources like Khan Academy.',
+      'Don’t hesitate to revisit the basics to build a solid foundation.',
+      'Take notes and outline the key points of the topic to simplify it.',
+      'Seek alternative explanations from different resources or peers.'
+    ],
+    'ashamed': [
+      'Focus on improving incrementally, set small achievable learning goals.',
+      'Reflect on what went wrong and develop a plan to do better next time.',
+      'Talk to a teacher or mentor to get constructive feedback.',
+      'Use setbacks as learning opportunities to grow and improve.',
+      'Remember, mistakes are part of the learning process—don’t be too hard on yourself.'
+    ],
+    'guilty': [
+      'Focus on positive steps forward, like setting a study schedule or planning a study group.',
+      'Start small and commit to learning for 15 minutes each day.',
+      'Identify what’s holding you back and tackle it one step at a time.',
+      'Talk to someone you trust about your challenges and ask for help.',
+      'Use this feeling as motivation to take action and make progress.'
+    ],
+    'jealous': [
+      'Use this feeling as motivation to work harder and achieve your own academic goals.',
+      'Seek inspiration from those who are excelling and ask them for advice.',
+      'Focus on your unique strengths and how you can use them to succeed.',
+      'Set personal goals that align with your interests and ambitions.',
+      'Embrace healthy competition and use it to push yourself to do better.'
+    ],
+    'curious': [
+      'Follow your curiosity—explore new subjects or dive deeper into topics of interest.',
+      'Try hands-on learning, such as experiments or building something yourself.',
+      'Join a club or community related to your interests to further your knowledge.',
+      'Ask questions and seek out additional resources to satisfy your curiosity.',
+      'Use your curiosity to spark creativity and innovation in your projects.'
+    ],
+    'optimistic': [
+      'Set ambitious academic goals and visualize achieving them.',
+      'Challenge yourself with more difficult study materials.',
+      'Break your goals into manageable steps and celebrate small wins.',
+      'Encourage others around you to stay optimistic and work toward their goals.',
+      'Use optimism to create a positive, forward-thinking learning routine.'
+    ],
+    'pessimistic': [
+      'Start with easier tasks to regain confidence before moving on to harder ones.',
+      'Try reframing challenges as opportunities to grow and learn.',
+      'Talk to a mentor about your concerns and develop a plan to move forward.',
+      'Focus on past successes to remind yourself that you are capable.',
+      'Set small, achievable goals to shift your mindset and feel accomplished.'
+    ],
+    'nostalgic': [
+      'Review your past notes and see how much you’ve learned—celebrate your progress.',
+      'Use the past as motivation to push forward in your studies.',
+      'Consider how far you’ve come and keep building on that knowledge.',
+      'Share your learning experiences with others—teaching can reinforce your understanding.',
+      'Document your learning journey and reflect on the progress you’ve made.'
+    ],
+    'anxious': [
+      'Take deep breaths and focus on one task at a time.',
+      'Break your study session into short, manageable blocks to reduce anxiety.',
+      'Take breaks to relax and clear your mind before getting back to your studies.',
+      'Try mindfulness techniques to reduce stress and stay focused.',
+      'Focus on progress, not perfection—any step forward is a success.'
+    ],
+    'frustrated': [
+      'Take a short break and come back with fresh eyes.',
+      'Review your notes or try a different approach to the problem you’re stuck on.',
+      'Revisit the study materials with a more relaxed mindset.',
+      'Identify what’s causing the frustration and create a strategy to overcome it.',
+      'Consider asking for help from a peer or teacher to break through the barrier.'
+    ],
+    'content': [
+      'Keep up the good work and continue building on your strengths.',
+      'Share your learning experience with others—teaching can reinforce your knowledge.',
+      'Reflect on your progress and think about the next steps you’d like to take.',
+      'Set a new goal to challenge yourself further and keep the momentum going.',
+      'Maintain your study rhythm and aim to balance challenges with reward.'
+    ],
+    'hopeful': [
+      'Set clear, achievable goals for your learning journey.',
+      'Visualize the successful completion of your current studies or project.',
+      'Break large projects into smaller tasks to avoid feeling overwhelmed.',
+      'Stay focused on the positives and your end goals to keep your spirits high.',
+      'Find inspiration in the progress you’ve already made, and keep pushing forward.'
+    ],
+  };
+
+  // Define filters for each emotion
+  const filters = {
+    'angry': 'filter-red',
+    'disgusted': 'filter-green',
+    'fearful': 'filter-blue',
+    'happy': 'filter-yellow',
+    'sad': 'filter-gray',
+    'surprised': 'filter-purple',
+    'neutral': 'filter-clear',
+    'bored': 'filter-brown',
+    'excited': 'filter-orange',
+    'confused': 'filter-teal',
+    'ashamed': 'filter-pink',
+    'guilty': 'filter-cyan',
+    'jealous': 'filter-darkgreen',
+    'curious': 'filter-lavender',
+    'optimistic': 'filter-lightblue',
+    'pessimistic': 'filter-darkgray',
+    'nostalgic': 'filter-lightyellow',
+    'anxious': 'filter-darkblue',
+    'frustrated': 'filter-darkred',
+    'content': 'filter-lightgreen',
+    'hopeful': 'filter-lightorange',
+  };
+
+  // Initialize video stream
+  async function initVideoStream() {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: true
+      });
+      video.srcObject = stream;
+      // Continuously detect emotions every 30 seconds
+      setInterval(detectAndSpeakEmotion, 30000);
+    } catch (error) {
+      console.error('Error accessing webcam:', error);
+      alert('Could not access the webcam. Please check your permissions.');
+    }
+  }
+
+  // Mock emotion detection function (replace this with actual detection logic)
+  function detectEmotion() {
+    const emotionsList = Object.keys(emotions);
+    return emotionsList[Math.floor(Math.random() * emotionsList.length)];
+  }
+
+  // Speak suggestions aloud
+  function speakSuggestion(suggestions) {
+    const utterance = new SpeechSynthesisUtterance(suggestions.join(' '));
+    // Choose voice based on user preference or randomly
+    const voices = window.speechSynthesis.getVoices();
+    const maleVoice = voices.find(voice => voice.name.includes('male')) || voices[0];
+    const femaleVoice = voices.find(voice => voice.name.includes('female')) || voices[1];
+    utterance.voice = Math.random() > 0.5 ? maleVoice : femaleVoice;
+    window.speechSynthesis.speak(utterance);
+  }
+
+  // Detect and update the emotion display
+  async function detectAndSpeakEmotion() {
+    const detectedEmotion = detectEmotion();
+    updateEmotionDisplay(detectedEmotion);
+  }
+
+  // Update the display with detected emotion and educational suggestions
+  function updateEmotionDisplay(emotion) {
+    emotionDisplay.innerText = `Emotion: ${emotion.charAt(0).toUpperCase() + emotion.slice(1)}`;
+    const suggestions = emotions[emotion];
+    const suggestionText = suggestions ? suggestions : ['No educational suggestions available.'];
+    suggestionDisplay.innerText = suggestionText.join(' | ');
+    // Apply filter based on detected emotion
+    applyFilter(emotion);
+    speakSuggestion(suggestionText);
+  }
+
+  // Apply filter to the video element
+  function applyFilter(emotion) {
+    const filterClass = filters[emotion] || '';
+    video.className = filterClass; // Update the video class to apply the filter
+  }
+
+  // Start the application
+  initVideoStream();
+</script>
+
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BeyondLearn</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-left">
+                <!-- Clickable Title that returns to the index page -->
+                <a href="index.html"><h1>BeyondLearn</h1></a>
+            </div>
+            <div class="header-right">
+                
+                <div class="header-right">
+                    <a href="signup.html">
+                        <button class="cta-button sign-up-btn" id="sign-up-btn">Sign Up</button>
+                    </a>
+                </div>
+                
+                <button class="cta-button team-btn" id="team-btn" onclick="toggleTeamList()">👥</button> <!-- Emoji for Team -->
+                
+                <!-- Dark Mode Button -->
+                <button class="cta-button" id="mode-toggle" onclick="toggleMode()">🌙</button> <!-- Emoji for Dark Mode -->
+                
+                <!-- Language Switcher Button with Dropdown -->
+                <button class="cta-button" id="language-toggle" onclick="toggleLanguageDropdown()">🌍</button>
+                <div id="language-dropdown" class="dropdown">
+                    <ul>
+                        <li onclick="changeLanguage('en')">English</li>
+                        <li onclick="changeLanguage('hi')">Hindi</li>
+                        <li onclick="changeLanguage('ar')">Arabic</li>
+                        <li onclick="changeLanguage('ja')">Japanese</li>
+                        <li onclick="changeLanguage('zh')">Mandarin</li>
+                        <li onclick="changeLanguage('la')">Latin</li>
+                        <li onclick="changeLanguage('ur')">Urdu</li>
+                        <li onclick="changeLanguage('es')">Spanish</li>
+                        <li onclick="changeLanguage('fr')">French</li>
+                        <li onclick="changeLanguage('pt')">Portuguese</li>
+                        <li onclick="changeLanguage('af')">Afrikaans</li>
+                        <li onclick="changeLanguage('sw')">Swahili</li>
+                        <li onclick="changeLanguage('zu')">Zulu</li>
+                        <li onclick="changeLanguage('ha')">Hausa</li>
+                        <li onclick="changeLanguage('mr')">Marathi</li>
+                        <li onclick="changeLanguage('bn')">Bengali</li>
+                        <li onclick="changeLanguage('or')">Odia</li>
+                        <li onclick="changeLanguage('te')">Telugu</li>
+                        <li onclick="changeLanguage('ta')">Tamil</li>
+                        <li onclick="changeLanguage('ml')">Malayalam</li>
+                        <li onclick="changeLanguage('kn')">Kannada</li>
+                        <li onclick="changeLanguage('ne')">Nepali</li>
+                        <li onclick="changeLanguage('sat')">Santali</li>
+                        <li onclick="changeLanguage('sd')">Sindi</li>
+                        <li onclick="changeLanguage('gu')">Gujarati</li>
+                    </ul>
+                </div>
+                
+                <!-- Read Aloud Button -->
+                <button class="cta-button" id="read-aloud" onclick="readAloud()">🔊</button> <!-- Emoji for Read Aloud -->
+            </div>
+        </header>
+
+        <!-- Main Content Section -->
+        <main class="main-content">
+            <div class="about-and-logo">
+                <!-- About Section -->
+                <section class="about">
+                    <h2>About Us</h2>
+                    <p>BeyondLearn is your gateway to unlocking new learning experiences. Test your knowledge, enhance your skills, and go beyond the basics with our fun and interactive tests. Ready to challenge yourself?</p>
+                </section>
+
+                <!-- Logo Section -->
+                <div class="logo-container">
+                    <img src="beyondlearn.png" alt="BeyondLearn Logo" class="logo">
+                </div>
+            </div>
+
+            <div class="link-container">
+                <a href="learningmodel.html" class="page-link">Our Learning Model</a>
+                <a href="statedetection.html" class="page-link">State Detection</a>
+                <a href="assistant.cs" class="page-link">Assistant</a>
+                <!-- Link to the test page -->
+                <a href="test.html" class="page-link">Take the Test</a>
+            </div>
+
+            <!-- Team List Section (Initially hidden) -->
+            <div id="team-list" class="team-list">
+                <h3>Our Team</h3>
+                <ul>
+                    <li>John Doe</li>
+                    <li>Jane Smith</li>
+                    <li>Sam Lee</li>
+                    <li>Amy Clark</li>
+                    <li>David King</li>
+                </ul>
+                <p>School: Birla Public School, Doha</p>
+                <p>Team #3</p>
+            </div>
+        </main>
+
+        <!-- Footer Section -->
+        <footer class="footer">
+            <p>© 2024 BeyondLearn. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript for Interactivity -->
+    <script>
+        // Toggle Team List visibility
+        function toggleTeamList() {
+            var teamList = document.getElementById('team-list');
+            teamList.style.display = teamList.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Toggle between Dark Mode and Light Mode
+        function toggleMode() {
+            var body = document.body;
+            body.classList.toggle('dark-mode');
+            
+            // Update button text based on mode
+            var modeButton = document.getElementById('mode-toggle');
+            if (body.classList.contains('dark-mode')) {
+                modeButton.textContent = '🌞';  // Change emoji to sun for Light Mode
+            } else {
+                modeButton.textContent = '🌙';  // Change emoji to moon for Dark Mode
+            }
+        }
+
+        // Language Dropdown Toggle
+        function toggleLanguageDropdown() {
+            var dropdown = document.getElementById('language-dropdown');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function changeLanguage(language) {
+            // Simulate changing text based on language code
+            const languages = {
+                'en': { 'about-title': 'About BeyondLearn', 'about-text': 'BeyondLearn is your gateway to unlocking new learning experiences...' },
+                'hi': { 'about-title': 'बियॉन्डलर्न के बारे में', 'about-text': 'बियॉन्डलर्न आपके लिए नई सीखने के अनुभवों के दरवाजे खोलता है...' },
+                'ar': { 'about-title': 'حول BeyondLearn', 'about-text': 'BeyondLearn هو بوابتك لفتح تجارب تعلم جديدة...' },
+                'es': { 'about-title': 'Acerca de BeyondLearn', 'about-text': 'BeyondLearn es tu puerta de entrada para desbloquear nuevas experiencias de aprendizaje...' },
+                // Add other languages here...
+            };
+
+            document.querySelector('.about h2').textContent = languages[language]['about-title'] || 'About BeyondLearn';
+            document.querySelector('.about p').textContent = languages[language]['about-text'] || 'BeyondLearn is your gateway to unlocking new learning experiences...';
+            // Close dropdown after selection
+            document.getElementById('language-dropdown').style.display = 'none';
+        }
+        // Apply dark mode by default when the page loads
+        document.body.classList.add('dark-mode');
+
+        // Read Aloud Functionality
+        let isReading = false;
+        let utterance = null;
+
+        function readAloud() {
+            const content = document.querySelector('main').innerText;
+            const lang = document.querySelector('#language-toggle').textContent === '🇪🇸' ? 'es' : 'en'; // Simple check for language
+            if (isReading) {
+                // Pause
+                speechSynthesis.pause();
+            } else if (utterance) {
+                // Resume
+                speechSynthesis.resume();
+            } else {
+                // Start from the beginning
+                utterance = new SpeechSynthesisUtterance(content);
+                utterance.lang = lang; // Set language
+                utterance.voice = speechSynthesis.getVoices().find(voice => voice.lang === lang);
+                speechSynthesis.speak(utterance);
+            }
+
+            isReading = !isReading;
+        }
+
+        // Restart on Double Click
+        document.getElementById('read-aloud').addEventListener('dblclick', function () {
+            if (utterance) {
+                speechSynthesis.cancel();  // Restart the reading
+                isReading = false;
+                readAloud();  // Restart reading
+            }
+        });
+
+    </script>
+</body>
+
+</html>

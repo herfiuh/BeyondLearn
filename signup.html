@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f7f7f7;
+    }
+
+    .login-container {
+      width: 400px;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      text-align: center;
+    }
+
+    .login-container h2 {
+      margin-bottom: 20px;
+    }
+
+    .login-container input[type="text"],
+    .login-container input[type="email"],
+    .login-container input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    .login-container label {
+      display: block;
+      margin-top: 10px;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    .login-container input[type="radio"] {
+      margin: 0 5px;
+    }
+
+    .login-container .checkbox-container {
+      display: flex;
+      align-items: center;
+      margin-top: 15px;
+    }
+
+    .login-container .checkbox-container input[type="checkbox"] {
+      margin-right: 5px;
+    }
+
+    .login-container .checkbox-container a {
+      text-decoration: none;
+      color: #0073e6;
+    }
+
+    .login-container button {
+      width: 100%;
+      padding: 10px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .login-container p {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .login-container p a {
+      color: #0073e6;
+      text-decoration: none;
+    }
+
+    .login-container .accessibility {
+      font-size: 12px;
+      color: #666;
+      margin-top: 10px;
+    }
+  </style>
+  <script>
+    function redirectToMainPage() {
+      // Replace 'main-website.html' with the actual URL or path of the main website page
+      window.location.href = 'main-website.html';
+    }
+  </script>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Create an Account</h2>
+    <form onsubmit="event.preventDefault(); redirectToMainPage();">
+      <label for="fullName">Full Name:</label>
+      <input type="text" id="fullName" placeholder="Enter your full name">
+
+      <label for="email">Email Address:</label>
+      <input type="email" id="email" placeholder="Enter your email">
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" placeholder="Create a password">
+
+      <label>User Type:</label>
+      <input type="radio" id="student" name="userType" value="student">
+      <label for="student" style="display:inline;">Student</label>
+      <input type="radio" id="teacher" name="userType" value="teacher">
+      <label for="teacher" style="display:inline;">Teacher</label>
+      <input type="radio" id="parent" name="userType" value="parent">
+      <label for="parent" style="display:inline;">Parent</label>
+
+      <label for="school">School/Institute (Optional):</label>
+      <input type="text" id="school" placeholder="Enter your school or institute name">
+
+      <div class="checkbox-container">
+        <input type="checkbox" id="terms">
+        <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</label>
+      </div>
+
+      <button type="submit">Sign Up</button>
+
+      <p>Already have an account? <a href="login.html">Log in</a></p>
+
+
+      <p class="accessibility">If you need help, please use the <strong>Read Aloud</strong> feature available on the platform for accessibility.</p>
+    </form>
+  </div>
+</body>
+</html>
